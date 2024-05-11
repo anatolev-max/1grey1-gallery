@@ -1,9 +1,18 @@
-const scheme = 'http';
-const port = 80;
-const host = `localhost:${port}`;
+import {ServerStatus} from "./enum.js";
 
-// const scheme = 'https';
-// const host = '1grey1-api.webdot.pro';
+const APP_ENV = ServerStatus.GLOBAL;
+let scheme;
+let host;
+
+if (APP_ENV === ServerStatus.LOCAL){
+    const port = 80;
+    scheme = 'http';
+    host = `localhost:${port}`;
+}
+if (APP_ENV === ServerStatus.GLOBAL) {
+    scheme = 'https';
+    host = '1grey1-api.webdot.pro';
+}
 
 const Url = {
     ACCESS_TOKEN: {

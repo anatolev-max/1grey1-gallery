@@ -9,7 +9,13 @@ const HttpMethod = {
     DELETE: 'DELETE'
 };
 
+const ServerStatus = {
+    LOCAL: 'dev',
+    GLOBAL: 'prod'
+}
+
 export {
     MessageType,
-    HttpMethod
+    HttpMethod,
+    ServerStatus
 }
