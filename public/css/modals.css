@@ -1,0 +1,47 @@
+#login-modal,
+#signup-modal {
+    top: -100%;
+    transition: 1000ms;
+}
+
+#login-modal.show,
+#signup-modal.show {
+    top: 0;
+}
+
+#signup-modal h1,
+#login-modal h1 {
+    font-size: 24px !important;
+    text-transform: none;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#signup-modal label,
+#login-modal label {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    text-transform: none;
+}
+
+#signup-modal input,
+#login-modal input {
+    margin: 0;
+}
+
+#signup-modal .invalid-feedback,
+#login-modal .invalid-feedback {
+    font-family: initial;
+    font-size: 14px;
+    text-transform: none;
+}
+
+#signup-modal button[type=submit],
+#login-modal button[type=submit] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: initial;
+    font-size: 16px;
+    pointer-events: all;
+}

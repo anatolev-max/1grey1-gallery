@@ -1,0 +1,83 @@
+.main-header, .main-header * {
+    text-transform: none !important;
+}
+
+.main-header {
+    font-family: initial;
+    background-color: rgba(238, 210, 30, 1);
+}
+
+.main-header .main-header-nav {
+    display: flex;
+    height: 70px;
+}
+
+.main-header .main-header-nav .logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.main-header-nav #guest-menu,
+.main-header-nav #user-menu {
+    display: none;
+}
+
+body[data-auth="false"] .main-header-nav #guest-menu,
+body[data-auth="true"] .main-header-nav #user-menu {
+    display: flex;
+}
+
+.main-header .main-header-nav ul {
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    list-style: none;
+}
+
+.main-header .main-header-nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .main-header-nav ul li:not(:first-child) {
+    margin-left: 20px;
+}
+
+.main-header .main-header-nav ul li a {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.main-header .main-header-nav #user-menu li:first-child {
+    display: flex;
+}
+
+.main-header .main-header-nav #user-menu li #username {
+    margin-left: 10px;
+    color: #000;
+    font-weight: 600;
+}
+
+.main-header .main-header-nav #user-menu li #username span {
+    font-weight: 700;
+}
+
+.main-header .main-header-nav #user-menu li #logout-btn {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.main-header .main-header-nav #user-menu li #logout-btn:disabled {
+    pointer-events: all;
+}
+
+            /*.main-header, .main-header * {*/
+            /*    text-transform: none !important;*/
+            /*}*/
