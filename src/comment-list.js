@@ -18,7 +18,7 @@ const setLoaderClick = function (comments) {
     }
 
     this.onLoaderClick = () => {
-        blockButton(showMoreButtonElement, ' ', false);
+        blockButton(showMoreButtonElement, 'loading');
         window.setTimeout(()=>{
             unblockButton(showMoreButtonElement);
             renderComments(comments, renderedCommentCount, renderedCommentCount + COMMENT_COUNT_PER_STEP);
