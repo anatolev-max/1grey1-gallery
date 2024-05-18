@@ -1,6 +1,7 @@
 import {getModalEscKeydownHandler, onModalOverlayClick} from "../modal-util";
+import {APP_NAME} from "../const";
+import {RenderPosition} from "../enum";
 
-const nameElement = document.querySelector('title');
 const loginModalElement = document.getElementById('login-modal');
 const signupModalElement = document.getElementById('signup-modal');
 const signupModalOpenElement = document.getElementById('signup-btn');
@@ -20,19 +21,20 @@ const evtModal = [
     }
 ];
 
-let openModalElement;
-
 const onModalEscKeydown = getModalEscKeydownHandler(() => {
     closeModal(openModalElement);
 });
+
 const onOverlayClick = onModalOverlayClick(() => {
     closeModal(openModalElement);
 }, 'modal-dialog');
 
+let openModalElement;
+
 const openModal = (modalElement) => {
     const modalBackdropElement = modalBackdropTemplate.cloneNode(true);
     openModalElement = modalElement;
-    openModalElement.insertAdjacentElement('afterend', modalBackdropElement);
+    openModalElement.insertAdjacentElement(RenderPosition.AFTEREND, modalBackdropElement);
     openModalElement.style.display = 'block';
 
     window.setTimeout(() => {
@@ -41,10 +43,10 @@ const openModal = (modalElement) => {
 
         switch (openModalElement) {
             case loginModalElement:
-                nameElement.textContent = 'WebdotApp-1 | Authorization';
+                document.title = `${APP_NAME} | Authorization`;
                 break;
             case signupModalElement:
-                nameElement.textContent = 'WebdotApp-1 | Registration';
+                document.title = `${APP_NAME} | Registration`;
                 break;
         }
 
@@ -60,7 +62,7 @@ function closeModal() {
         document.querySelectorAll('.modal-backdrop').forEach((bd) => bd.remove());
         openModalElement.style.display = 'none';
         document.body.classList.remove('modal-open');
-        nameElement.textContent = 'WebdotApp-1';
+        document.title = APP_NAME;
 
         openModalElement.querySelector('.btn-close').removeEventListener('click', closeModal);
         openModalElement.removeEventListener('click', onOverlayClick);
