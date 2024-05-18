@@ -1,7 +1,7 @@
 import {VALIDATION_ERROR_KEYS, VALIDATORS} from './validation.js';
 import {blockButton, unblockButton} from './user/util.js';
 import {sendFetchRequest} from './api/base/fetch-api.js';
-import {AppStorage, Url} from './const.js';
+import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 
 const MAX_DESCRIPTION_LENGTH = 400;
@@ -64,18 +64,18 @@ const setUploadFormSubmit = (onSuccess, onFail) => {
     uploadFormElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
 
-        if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+        if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
             return;
         }
 
-        const {user} = JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN));
+        const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
 
         const formData = new FormData(uploadFormElement);
         formData.set('user_id', user.id);
 
         blockButton(submitBtnElement, 'Публикация', false);
         window.setTimeout(() => {
-            sendFetchRequest(Url.PICTURE.POST, HttpMethod.POST, formData)
+            sendFetchRequest(URL.PICTURE.POST, HttpMethod.POST, formData)
                 .then(() => {
                     unblockButton(submitBtnElement);
                     onSuccess();

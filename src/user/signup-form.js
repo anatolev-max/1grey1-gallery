@@ -1,6 +1,6 @@
 import {sendData} from '../api/user/fetch-api.js';
 import {blockButton, unblockButton} from './util.js';
-import {Url} from "../const";
+import {URL} from "../const";
 
 const signupFormElement = document.querySelector('#signup-modal form');
 const submitBtnElement = signupFormElement.querySelector('[type=submit]');
@@ -14,7 +14,7 @@ const setSignupFormSubmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Registration');
         window.setTimeout(() => {
-            sendData(Url.USER.POST, formData)
+            sendData(URL.USER.POST, formData)
                 .then(({status, errors}) => {
                     if (status === 201) {
                         onSuccess();

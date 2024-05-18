@@ -1,4 +1,4 @@
-import {Url} from './const.js';
+import {URL} from './const.js';
 import {clearEntityList} from "./util";
 import {blockButton, unblockButton} from './user/util.js';
 
@@ -39,7 +39,7 @@ const renderComments = (comments, from, to) => {
     for (const {message, user} of comments.slice(from, to)) {
         const commentElement = commentTemlate.cloneNode(true);
         commentElement.querySelector('.social__text').textContent = message;
-        commentElement.querySelector('.social__picture').src = Url.UPLOAD.AVATAR + user.avatar;
+        commentElement.querySelector('.social__picture').src = URL.UPLOAD.AVATAR + user.avatar;
         commentListElement.append(commentElement);
         renderedCommentCountElement.textContent = String((+renderedCommentCountElement.textContent) + 1);
     }

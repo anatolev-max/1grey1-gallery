@@ -1,12 +1,12 @@
-import {AppStorage} from "../../const";
+import {APP_STORAGE} from "../../const";
 import {HttpMethod} from "../../enum";
 
 const getToken = () => {
-    if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)){
+    if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)){
         return;
     }
 
-    return JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN)).token;
+    return JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)).token;
 }
 
 const getOptions = (httpMethod = HttpMethod.GET, body = null) => {

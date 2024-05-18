@@ -1,11 +1,17 @@
-const scheme = 'http';
-const port = 80;
-const host = `localhost:${port}`;
+const SERVER_STATUS = {
+    LOCAL: {
+        scheme: 'http',
+        host: `localhost:80`
+    },
+    REMOTE: {
+        scheme:'https',
+        host: '1grey1-api.webdot.pro'
+    }
+}
 
-// const scheme = 'https';
-// const host = '1grey1-api.webdot.pro';
+const {scheme, host} = SERVER_STATUS.LOCAL;
 
-const Url = {
+const URL = {
     ACCESS_TOKEN: {
         POST: `${scheme}://${host}/token`,
         DELETE: `${scheme}://${host}/logout/`
@@ -33,16 +39,10 @@ const Url = {
     }
 };
 
-const AppStorage = {
+const APP_STORAGE = {
     ACCESS_TOKEN: `gallery_${btoa('token')}`,
     EFFECTS: `gallery_${btoa('effects')}`,
     PICTURE: `gallery_${btoa('picture')}`
-};
-
-const Filter = {
-    DEFAULT: 'default',
-    RANDOM: 'random',
-    DISCUSSED: 'discussed'
 };
 
 const MODAL_INPUT_SELECTORS = [
@@ -57,8 +57,7 @@ const MODAL_INPUT_SELECTORS = [
 ];
 
 export {
-    Url,
-    AppStorage,
-    Filter,
+    URL,
+    APP_STORAGE,
     MODAL_INPUT_SELECTORS
 };

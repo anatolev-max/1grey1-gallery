@@ -1,4 +1,4 @@
-import {Url} from "../../const";
+import {URL} from "../../const";
 
 const sendData = (url, body) => {
     let resp;
@@ -23,7 +23,7 @@ const sendData = (url, body) => {
 const deleteToken = (token, tokenId) => {
     let resp;
 
-    return fetch(`${Url.ACCESS_TOKEN.DELETE}${tokenId}`, {
+    return fetch(`${URL.ACCESS_TOKEN.DELETE}${tokenId}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Basic ${btoa(token + ':')}`

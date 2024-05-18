@@ -4,12 +4,19 @@ const MessageType = {
 };
 
 const HttpMethod = {
-    GET: 'GET',
-    POST: 'POST',
-    DELETE: 'DELETE'
+    GET: 'get',
+    POST: 'post',
+    DELETE: 'delete'
+};
+
+const Filter = {
+    DEFAULT: 'default',
+    RANDOM: 'random',
+    DISCUSSED: 'discussed'
 };
 
 export {
     MessageType,
-    HttpMethod
+    HttpMethod,
+    Filter
 }
