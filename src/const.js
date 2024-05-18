@@ -11,6 +11,8 @@ const SERVER_STATUS = {
 
 const {scheme, host} = SERVER_STATUS.LOCAL;
 
+const APP_NAME = 'WebdotApp-1'
+
 const URL = {
     ACCESS_TOKEN: {
         POST: `${scheme}://${host}/token`,
@@ -59,5 +61,6 @@ const MODAL_INPUT_SELECTORS = [
 export {
     URL,
     APP_STORAGE,
-    MODAL_INPUT_SELECTORS
+    MODAL_INPUT_SELECTORS,
+    APP_NAME
 };
