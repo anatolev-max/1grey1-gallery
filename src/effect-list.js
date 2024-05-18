@@ -1,4 +1,4 @@
-import {AppStorage} from './const.js';
+import {APP_STORAGE} from './const.js';
 import {clearEntityList} from './util';
 
 const effectListElement = document.querySelector('.effects__list');
@@ -7,10 +7,10 @@ const effectTemlate = document.getElementById('effect-item')
     .querySelector('.effects__item');
 
 const renderEffectsList = () => {
-    const effects = JSON.parse(localStorage.getItem(AppStorage.EFFECTS));
+    const effects = JSON.parse(localStorage.getItem(APP_STORAGE.EFFECTS));
     clearEntityList('.effects__item');
 
-    if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+    if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
         return;
     }
 

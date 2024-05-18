@@ -1,20 +1,17 @@
-import {ServerStatus} from "./enum.js";
-
-const APP_ENV = ServerStatus.GLOBAL;
-let scheme;
-let host;
-
-if (APP_ENV === ServerStatus.LOCAL){
-    const port = 80;
-    scheme = 'http';
-    host = `localhost:${port}`;
-}
-if (APP_ENV === ServerStatus.GLOBAL) {
-    scheme = 'https';
-    host = '1grey1-api.webdot.pro';
+const SERVER_STATUS = {
+    LOCAL: {
+        scheme: 'http',
+        host: `localhost:80`
+    },
+    REMOTE: {
+        scheme:'https',
+        host: '1grey1-api.webdot.pro'
+    }
 }
 
-const Url = {
+const {scheme, host} = SERVER_STATUS.LOCAL;
+
+const URL = {
     ACCESS_TOKEN: {
         POST: `${scheme}://${host}/token`,
         DELETE: `${scheme}://${host}/logout/`
@@ -42,16 +39,10 @@ const Url = {
     }
 };
 
-const AppStorage = {
+const APP_STORAGE = {
     ACCESS_TOKEN: `gallery_${btoa('token')}`,
     EFFECTS: `gallery_${btoa('effects')}`,
     PICTURE: `gallery_${btoa('picture')}`
-};
-
-const Filter = {
-    DEFAULT: 'default',
-    RANDOM: 'random',
-    DISCUSSED: 'discussed'
 };
 
 const MODAL_INPUT_SELECTORS = [
@@ -66,8 +57,7 @@ const MODAL_INPUT_SELECTORS = [
 ];
 
 export {
-    Url,
-    AppStorage,
-    Filter,
+    URL,
+    APP_STORAGE,
     MODAL_INPUT_SELECTORS
 };

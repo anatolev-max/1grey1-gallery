@@ -1,6 +1,6 @@
 import {blockButton, unblockButton} from './user/util.js';
 import {sendFetchRequest} from './api/base/fetch-api.js';
-import {AppStorage, Url} from './const.js';
+import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 
 const commentFormElement = document.querySelector('#comment-form');
@@ -11,12 +11,12 @@ const setCommentFormSabmit = (onSuccess, onFail) => {
     commentFormElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
 
-        if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+        if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
             return;
         }
 
-        const {user} = JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN));
-        const picture = JSON.parse(localStorage.getItem(AppStorage.PICTURE));
+        const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
+        const picture = JSON.parse(localStorage.getItem(APP_STORAGE.PICTURE));
 
         const formData = new FormData(commentFormElement);
         formData.set('user_id', user.id);
@@ -24,7 +24,7 @@ const setCommentFormSabmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Отправка');
         window.setTimeout(() => {
-            sendFetchRequest(Url.COMMENT.POST, HttpMethod.POST ,formData)
+            sendFetchRequest(URL.COMMENT.POST, HttpMethod.POST ,formData)
                 .then(() => {
                     onSuccess(picture.id);
                     commentInputElement.value = '';

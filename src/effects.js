@@ -1,6 +1,6 @@
-import {AppStorage} from './const.js';
+import {APP_STORAGE} from './const.js';
 
-const EFFECTS = JSON.parse(localStorage.getItem(AppStorage.EFFECTS));
+const EFFECTS = JSON.parse(localStorage.getItem(APP_STORAGE.EFFECTS));
 const effectLevelElement = document.querySelector('.effect-level')
 const effectLevelSliderElement = effectLevelElement.querySelector('.effect-level__slider');
 const effectLevelValueElement = effectLevelElement.querySelector('.effect-level__value');
@@ -32,7 +32,7 @@ if (noUiSlider) {
 }
 
 const onSliderUpdate = (_, handle, unencoded) => {
-    if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+    if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
         return;
     }
 
@@ -47,7 +47,7 @@ const onSliderUpdate = (_, handle, unencoded) => {
 }
 
 const onEffectsRadioChange = (evt) => {
-    if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+    if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
         return;
     }
 
@@ -76,7 +76,7 @@ const onEffectsRadioChange = (evt) => {
 }
 
 const setImageEffect = (pictureElement, picture) => {
-    const effects = JSON.parse(localStorage.getItem(AppStorage.EFFECTS));
+    const effects = JSON.parse(localStorage.getItem(APP_STORAGE.EFFECTS));
     const filter = effects.find((effect) => effect.id === picture.effect_id);
     const pictureImgElement = pictureElement.querySelector('img');
     if (picture.effect_level !== null) {

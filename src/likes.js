@@ -1,7 +1,7 @@
 import {blockButton, unblockButton} from './user/util.js';
 import {sendFetchRequest} from "./api/base/fetch-api.js";
 import {deleteData} from  './api/base/fetch-api'
-import {AppStorage, Url} from './const.js';
+import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 
 const submitBtnElement = document.querySelector('.likes-count');
@@ -16,7 +16,7 @@ const getLike = (likes, userId, pictureId) => {
 const updateLikesCount = (likes) => {
     previewModalLikesElement.textContent = likes.length;
     const picture = JSON.parse(localStorage.getItem('gallery_cGljdHVyZQ=='));
-    const {user} = JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN));
+    const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
 
     if (getLike(picture.likes, user.id, picture.id)) {
         submitBtnElement.classList.add('likes-count--active');
@@ -32,7 +32,7 @@ const setLike = (onSuccess, userId, pictureId) => {
     
     blockButton(submitBtnElement, '');
     window.setTimeout(() => {
-        sendFetchRequest(Url.LIKE.POST, HttpMethod.POST, formData)
+        sendFetchRequest(URL.LIKE.POST, HttpMethod.POST, formData)
             .then(() => {
                 onSuccess();
                 unblockButton(submitBtnElement);
@@ -47,7 +47,7 @@ const removeLike = (onSuccess, likeId) => {
     blockButton(submitBtnElement, '');
 
     window.setTimeout(() => {
-        deleteData(Url.LIKE.DELETE + likeId)
+        deleteData(URL.LIKE.DELETE + likeId)
             .then(() => {
                 onSuccess();
                 unblockButton(submitBtnElement);
@@ -61,12 +61,12 @@ const removeLike = (onSuccess, likeId) => {
 const setLikesCountClick = (onSuccess) => {
     submitBtnElement.addEventListener('click', (evt) => {
         evt.preventDefault();
-        if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)) {
+        if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
             return;
         }
 
-        const {user} = JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN));
-        const picture = JSON.parse(localStorage.getItem(AppStorage.PICTURE));
+        const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
+        const picture = JSON.parse(localStorage.getItem(APP_STORAGE.PICTURE));
 
         if (getLike(picture.likes, user.id, picture.id)) {
             const likeId = picture.likes.find(like => like.user_id === user.id).id;

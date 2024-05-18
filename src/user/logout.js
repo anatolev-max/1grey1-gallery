@@ -1,6 +1,6 @@
 import {deleteToken} from '../api/user/fetch-api.js';
 import {blockButton, unblockButton} from './util.js';
-import {AppStorage} from '../const.js';
+import {APP_STORAGE} from '../const.js';
 import {clearEntityList} from '../util.js';
 import {clouseFilterBtnClick} from "../filters.js";
 
@@ -10,11 +10,11 @@ const uploadBtnElement = document.querySelector('.img-upload__label');
 
 const setLogoutBtnClick = (onSuccess) => {
     logoutBtnElement.addEventListener('click', () => {
-        if (!localStorage.getItem(AppStorage.ACCESS_TOKEN)){
+        if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)){
             return;
         }
 
-        const {token, id} = JSON.parse(localStorage.getItem(AppStorage.ACCESS_TOKEN));
+        const {token, id} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
 
         blockButton(logoutBtnElement, 'Logout');
         window.setTimeout(() => {

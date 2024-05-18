@@ -1,4 +1,4 @@
-import {Url} from "./const.js";
+import {URL} from "./const.js";
 import {openPreviewModal} from "./preview-modal.js";
 import {setImageEffect} from "./effects.js";
 import {clearEntityList} from "./util";
@@ -33,7 +33,7 @@ const renderPicturesList = (array, sort = false) => {
         const pictureElement = pictureTemplate.cloneNode(true);
         pictureElement.dataset.id = picture.id;
 
-        pictureElement.querySelector('.picture__img').setAttribute('src', Url.UPLOAD.PICTURE + picture.url);
+        pictureElement.querySelector('.picture__img').setAttribute('src', URL.UPLOAD.PICTURE + picture.url);
         updatePictureCounters(pictureElement, picture);
         setImageEffect(pictureElement, picture);
         pictureListElement.append(pictureElement);

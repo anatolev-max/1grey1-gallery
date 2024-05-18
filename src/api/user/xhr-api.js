@@ -1,4 +1,4 @@
-import {Url} from '../../const.js';
+import {URL} from '../../const.js';
 
 const signupFormElement = document.querySelector('#signup-modal form');
 const loginFormElement = document.querySelector('#login-modal form');
@@ -8,7 +8,7 @@ const LOGIN_FIELDS = ['email', 'password'];
 
 const createUser = (body, onSuccess, onFail) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', Url.USER.POST);
+    xhr.open('POST', URL.USER.POST);
 
     xhr.addEventListener('load', () => {
         if (xhr.status === 201) {
@@ -24,7 +24,7 @@ const createUser = (body, onSuccess, onFail) => {
 
 const createToken = (body, onSuccess, onFail) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', Url.ACCESS_TOKEN.POST);
+    xhr.open('POST', URL.ACCESS_TOKEN.POST);
 
     xhr.addEventListener('load', () => {
         if (xhr.status === 201) {
@@ -50,7 +50,7 @@ const createToken = (body, onSuccess, onFail) => {
 
 const deleteToken = (token, tokenId, onSuccess) => {
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `${Url.ACCESS_TOKEN.DELETE}${tokenId}`);
+    xhr.open('DELETE', `${URL.ACCESS_TOKEN.DELETE}${tokenId}`);
     xhr.setRequestHeader('Authorization', `Basic ${btoa(token + ':')}`);
 
     // FIXME:

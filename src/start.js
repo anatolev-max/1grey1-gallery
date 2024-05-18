@@ -1,7 +1,7 @@
 import {updatePageHeader} from './user/page-header.js';
 import {renderEffectsList} from './effect-list.js';
 import {renderPicturesList} from './picture-list.js';
-import {Url, AppStorage} from './const.js';
+import {URL, APP_STORAGE} from './const.js';
 import {setFilterBtnClick} from "./filters";
 import {checkMobileVersion} from "./util";
 import {sendFetchRequest} from "./api/base/fetch-api";
@@ -18,14 +18,14 @@ const start = () => {
         return;
     }
     if (updatePageHeader()) {
-        sendFetchRequest(Url.EFFECT.GET, HttpMethod.GET)
+        sendFetchRequest(URL.EFFECT.GET, HttpMethod.GET)
             .then((effects) => {
                 const data = effects.data;
-                localStorage.setItem(AppStorage.EFFECTS, JSON.stringify(data));
+                localStorage.setItem(APP_STORAGE.EFFECTS, JSON.stringify(data));
                 renderEffectsList();
             });
 
-        sendFetchRequest(Url.PICTURE.GET, HttpMethod.GET)
+        sendFetchRequest(URL.PICTURE.GET, HttpMethod.GET)
             .then((pictures) => {
                 const data = pictures.data;
                 renderPicturesList(data);

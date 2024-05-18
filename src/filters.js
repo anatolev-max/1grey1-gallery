@@ -1,6 +1,6 @@
 import {getRandomArrayElement} from './util.js';
 import {renderPicturesList, pictures} from './picture-list.js';
-import {Filter} from './const.js';
+import {Filter} from './enum.js';
 
 const filterList = document.querySelector('.img-filters--inactive');
 const filtersFormElement = document.querySelector('.img-filters__form');

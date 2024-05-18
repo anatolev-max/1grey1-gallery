@@ -4,13 +4,13 @@ import {setLoginFormSubmit} from './login-form.js';
 import {updatePageHeader} from './page-header.js';
 import {closeModal} from "./modal";
 import {setLogoutBtnClick} from './logout.js';
-import {AppStorage} from '../const.js';
+import {APP_STORAGE} from '../const.js';
 import {start} from '../start.js';
 
 setLoginFormSubmit(
     (token) => {
         closeModal();
-        localStorage.setItem(AppStorage.ACCESS_TOKEN, JSON.stringify(token));
+        localStorage.setItem(APP_STORAGE.ACCESS_TOKEN, JSON.stringify(token));
         updatePageHeader();
         start();
     },
@@ -26,6 +26,6 @@ setSignupFormSubmit(
 );
 
 setLogoutBtnClick(() => {
-    localStorage.removeItem(AppStorage.ACCESS_TOKEN);
+    localStorage.removeItem(APP_STORAGE.ACCESS_TOKEN);
     updatePageHeader();
 });

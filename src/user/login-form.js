@@ -1,6 +1,6 @@
 import {blockButton, unblockButton} from './util.js';
 import {sendData} from "../api/user/fetch-api";
-import {Url} from "../const";
+import {URL} from "../const";
 
 const loginFormElement = document.querySelector('#login-modal form');
 const submitBtnElement = loginFormElement.querySelector('[type=submit]');
@@ -13,7 +13,7 @@ const setLoginFormSubmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Signin in');
         window.setTimeout(() => {
-            sendData(Url.ACCESS_TOKEN.POST, formData)
+            sendData(URL.ACCESS_TOKEN.POST, formData)
                 .then(({data, status, errors}) => {
                     if (status === 201) {
                         onSuccess(data);

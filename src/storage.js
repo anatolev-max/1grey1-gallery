@@ -1,12 +1,12 @@
-import {AppStorage} from './const.js';
+import {APP_STORAGE} from './const.js';
 
 const getUser = () => {
-    const token = localStorage.getItem(AppStorage.ACCESS_TOKEN);
+    const token = localStorage.getItem(APP_STORAGE.ACCESS_TOKEN);
     return JSON.parse(token).user;
 }
 
 const getCurrentPicture = () => {
-    return JSON.parse(localStorage.getItem(AppStorage.PICTURE));
+    return JSON.parse(localStorage.getItem(APP_STORAGE.PICTURE));
 }
 
 export {

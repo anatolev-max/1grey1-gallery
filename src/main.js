@@ -7,7 +7,7 @@ import {updatePicture} from './picture-list.js';
 import {start} from './start.js';
 import {sendFetchRequest} from './api/base/fetch-api.js';
 import {renderProgressBar} from "./message.js";
-import {AppStorage, Url} from './const.js';
+import {APP_STORAGE, URL} from './const.js';
 import {renderPicturesList, pictures} from './picture-list.js';
 import {MessageType} from "./enum.js";
 import './upload-modal.js';
@@ -18,7 +18,7 @@ start();
 setUploadFormSubmit(() => {
     closeUploadModal();
     renderProgressBar(MessageType.SUCCESS, () => {
-        sendFetchRequest(Url.PICTURE.GET)
+        sendFetchRequest(URL.PICTURE.GET)
             .then((picture) => {
                 const data = picture.data;
                 renderPicturesList(data, true);
@@ -27,10 +27,10 @@ setUploadFormSubmit(() => {
 });
 
 setCommentFormSabmit((pictureId) => {
-    sendFetchRequest(Url.PICTURE.GET + `/${pictureId}`)
+    sendFetchRequest(URL.PICTURE.GET + `/${pictureId}`)
         .then((picture) => {
             const data = picture.data;
-            localStorage.setItem(AppStorage.PICTURE, JSON.stringify(data));
+            localStorage.setItem(APP_STORAGE.PICTURE, JSON.stringify(data));
             const indexPicture = pictures.indexOf(pictures.find((picture) => picture.id === pictureId));
             pictures.splice(indexPicture, 1, data);
             updatePicture(data);
@@ -39,10 +39,10 @@ setCommentFormSabmit((pictureId) => {
 });
 
 setLikesCountClick((pictureId) => {
-    sendFetchRequest(Url.PICTURE.GET + `/${pictureId}`)
+    sendFetchRequest(URL.PICTURE.GET + `/${pictureId}`)
         .then((picture) => {
             const data = picture.data;
-            localStorage.setItem(AppStorage.PICTURE, JSON.stringify(data));
+            localStorage.setItem(APP_STORAGE.PICTURE, JSON.stringify(data));
             const indexPicture = pictures.indexOf(pictures.find((picture) => picture.id === pictureId));
             pictures.splice(indexPicture, 1, data);
             updatePicture(data);
