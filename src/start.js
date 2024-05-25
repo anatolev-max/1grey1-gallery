@@ -4,7 +4,7 @@ import {renderPicturesList} from './picture-list.js';
 import {URL, APP_STORAGE} from './const.js';
 import {setFilterBtnClick} from "./filters";
 import {checkMobileVersion} from "./util";
-import {sendFetchRequest} from "./api/base/fetch-api";
+import {sendFetchRequest} from "./api/base/async-api";
 import {HttpMethod} from "./enum";
 
 const BLOCK_MESSAGE = 'Login from the computer version!';

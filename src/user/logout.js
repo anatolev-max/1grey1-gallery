@@ -1,4 +1,4 @@
-import {deleteToken} from '../api/user/fetch-api.js';
+import {deleteToken} from '../api/user/async-api.js';
 import {blockButton, unblockButton} from './util.js';
 import {APP_STORAGE, URL} from '../const.js';
 import {clearEntityList} from '../util.js';

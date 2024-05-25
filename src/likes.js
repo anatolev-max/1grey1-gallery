@@ -1,6 +1,5 @@
 import {blockButton, unblockButton} from './user/util.js';
-import {sendFetchRequest} from "./api/base/fetch-api.js";
-import {deleteData} from  './api/base/fetch-api'
+import {sendFetchRequest, deleteData} from "./api/base/async-api.js";
 import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 

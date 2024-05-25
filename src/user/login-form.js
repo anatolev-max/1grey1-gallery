@@ -1,5 +1,5 @@
 import {blockButton, unblockButton} from './util.js';
-import {sendData} from "../api/user/fetch-api";
+import {sendData} from "../api/user/async-api.js";
 import {URL} from "../const";
 
 const loginFormElement = document.querySelector('#login-modal form');

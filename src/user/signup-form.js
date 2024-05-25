@@ -1,4 +1,4 @@
-import {sendData} from '../api/user/fetch-api.js';
+import {sendData} from '../api/user/async-api.js';
 import {blockButton, unblockButton} from './util.js';
 import {URL} from "../const";
 
