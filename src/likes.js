@@ -1,6 +1,5 @@
 import {blockButton, unblockButton} from './user/util.js';
-import {sendFetchRequest} from "./api/base/fetch-api.js";
-import {deleteData} from  './api/base/fetch-api'
+import {sendFetchRequest, deleteData} from "./api/base/async-api.js";
 import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 
@@ -67,7 +66,6 @@ const setLikesCountClick = (onSuccess) => {
 
         const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
         const picture = JSON.parse(localStorage.getItem(APP_STORAGE.PICTURE));
-
         if (getLike(picture.likes, user.id, picture.id)) {
             const likeId = picture.likes.find(like => like.user_id === user.id).id;
             removeLike(

@@ -1,3 +1,5 @@
+import {RenderPosition} from "./enum.js";
+
 const loaderTemplate = document.getElementById('messages')
     .content
     .querySelector('.img-upload__message');
@@ -37,7 +39,7 @@ const renderProgressBar = (type, callback) => {
     const progressBarElement = loaderElement.querySelector('.progress-bar');
 
     document.body.append(loaderElement);
-    loaderElement.insertAdjacentElement('beforebegin', modalBackdropElement);
+    loaderElement.insertAdjacentElement(RenderPosition.BEFOREBEGIN, modalBackdropElement);
     modalBackdropElement.style.zIndex = '1';
 
     window.setTimeout(() => {

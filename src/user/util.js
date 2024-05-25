@@ -1,3 +1,5 @@
+import {RenderPosition} from "../enum";
+
 const spinnerTemplate = document.getElementById('spinner')
     .content
     .querySelector('.spinner-border');
@@ -17,7 +19,7 @@ const blockButton = (buttonElement, text, typeSpinner = true, renderSpiner = tru
         blockButton.oldText = buttonElement.innerText;
         buttonElement.innerHTML = '';
         if (renderSpiner) {
-            buttonElement.insertAdjacentElement('beforeend', spinnerElement);
+            buttonElement.insertAdjacentElement(RenderPosition.BEFOREEND, spinnerElement);
         }
         buttonElement.insertAdjacentText('beforeend', `${text}...`);
     }

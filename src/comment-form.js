@@ -1,5 +1,5 @@
 import {blockButton, unblockButton} from './user/util.js';
-import {sendFetchRequest} from './api/base/fetch-api.js';
+import {sendFetchRequest} from './api/base/async-api.js';
 import {APP_STORAGE, URL} from './const.js';
 import {HttpMethod} from "./enum";
 
@@ -24,7 +24,7 @@ const setCommentFormSabmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Отправка');
         window.setTimeout(() => {
-            sendFetchRequest(URL.COMMENT.POST, HttpMethod.POST ,formData)
+            sendFetchRequest(URL.COMMENT.POST, HttpMethod.POST, formData)
                 .then(() => {
                     onSuccess(picture.id);
                     commentInputElement.value = '';

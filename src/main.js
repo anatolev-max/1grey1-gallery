@@ -5,7 +5,7 @@ import {closeUploadModal} from './upload-modal.js';
 import {setUploadFormSubmit} from './upload-form.js';
 import {updatePicture} from './picture-list.js';
 import {start} from './start.js';
-import {sendFetchRequest} from './api/base/fetch-api.js';
+import {sendFetchRequest} from './api/base/async-api.js';
 import {renderProgressBar} from "./message.js";
 import {APP_STORAGE, URL} from './const.js';
 import {renderPicturesList, pictures} from './picture-list.js';

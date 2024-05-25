@@ -1,12 +1,10 @@
-import {URL} from "../../const";
+import {getOptions} from "../util";
+import {HttpMethod} from "../../enum";
 
-const sendData = (url, body) => {
+const sendData = (url, body, auth = true) => {
     let resp;
 
-    return fetch(url, {
-        method: 'POST',
-        body
-    })
+    return fetch(url, getOptions(HttpMethod.POST, body, auth))
         .then((response) => {
             resp = response;
             return response.json();
@@ -20,15 +18,10 @@ const sendData = (url, body) => {
         });
 };
 
-const deleteToken = (token, tokenId) => {
+const deleteToken = (url) => {
     let resp;
 
-    return fetch(`${URL.ACCESS_TOKEN.DELETE}${tokenId}`, {
-        method: 'DELETE',
-        headers: {
-            Authorization: `Basic ${btoa(token + ':')}`
-        }
-    })
+    return fetch(url, getOptions(HttpMethod.DELETE))
         .then((response) => {
             resp = response;
             return response;

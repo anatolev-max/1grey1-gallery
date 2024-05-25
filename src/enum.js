@@ -15,8 +15,15 @@ const Filter = {
     DISCUSSED: 'discussed'
 };
 
+const RenderPosition = {
+    AFTEREND: 'afterend',
+    BEFOREEND: 'beforeend',
+    BEFOREBEGIN: 'beforebegin'
+}
+
 export {
     MessageType,
     HttpMethod,
-    Filter
+    Filter,
+    RenderPosition
 }
