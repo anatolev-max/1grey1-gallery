@@ -60,6 +60,7 @@ const removeLike = (onSuccess, likeId) => {
 
 const setLikesCountClick = (onSuccess) => {
     submitBtnElement.addEventListener('click', (evt) => {
+        console.log(1);
         evt.preventDefault();
         if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
             return;

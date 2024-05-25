@@ -1,23 +1,5 @@
-import {APP_STORAGE} from "../../const";
 import {HttpMethod} from "../../enum";
-
-const getToken = () => {
-    if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)){
-        return;
-    }
-
-    return JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)).token;
-}
-
-const getOptions = (httpMethod = HttpMethod.GET, body = null) => {
-    return  {
-        method: httpMethod,
-        headers: {
-            Authorization: `Basic ${btoa(getToken() + ':')}`
-        },
-        body
-    };
-}
+import {getOptions} from "../util";
 
 const sendFetchRequest = (url, method, body) => {
     let resp;

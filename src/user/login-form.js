@@ -13,7 +13,7 @@ const setLoginFormSubmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Signin in');
         window.setTimeout(() => {
-            sendData(URL.ACCESS_TOKEN.POST, formData)
+            sendData(URL.ACCESS_TOKEN.POST, formData, false)
                 .then(({data, status, errors}) => {
                     if (status === 201) {
                         onSuccess(data);

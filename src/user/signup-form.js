@@ -14,7 +14,7 @@ const setSignupFormSubmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Registration');
         window.setTimeout(() => {
-            sendData(URL.USER.POST, formData)
+            sendData(URL.USER.POST, formData, false)
                 .then(({status, errors}) => {
                     if (status === 201) {
                         onSuccess();
