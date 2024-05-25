@@ -1,5 +1,5 @@
-import {HttpMethod} from "../enum";
-import {APP_STORAGE} from "../const";
+import {HttpMethod} from "../enum.js";
+import {APP_STORAGE} from "../const.js";
 
 const getToken = () => {
     if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)){

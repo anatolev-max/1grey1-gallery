@@ -1,6 +1,6 @@
-import {getModalEscKeydownHandler, onModalOverlayClick} from "../modal-util";
-import {APP_NAME} from "../const";
-import {RenderPosition} from "../enum";
+import {getModalEscKeydownHandler, onModalOverlayClick} from "../modal-util.js";
+import {APP_NAME} from "../const.js";
+import {RenderPosition} from "../enum.js";
 
 const loginModalElement = document.getElementById('login-modal');
 const signupModalElement = document.getElementById('signup-modal');

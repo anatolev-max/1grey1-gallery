@@ -1,4 +1,4 @@
-import {RenderPosition} from "./enum";
+import {RenderPosition} from "./enum.js";
 
 const loaderTemplate = document.getElementById('messages')
     .content

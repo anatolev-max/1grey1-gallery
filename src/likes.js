@@ -60,7 +60,6 @@ const removeLike = (onSuccess, likeId) => {
 
 const setLikesCountClick = (onSuccess) => {
     submitBtnElement.addEventListener('click', (evt) => {
-        console.log(1);
         evt.preventDefault();
         if (!localStorage.getItem(APP_STORAGE.ACCESS_TOKEN)) {
             return;
@@ -68,7 +67,6 @@ const setLikesCountClick = (onSuccess) => {
 
         const {user} = JSON.parse(localStorage.getItem(APP_STORAGE.ACCESS_TOKEN));
         const picture = JSON.parse(localStorage.getItem(APP_STORAGE.PICTURE));
-
         if (getLike(picture.likes, user.id, picture.id)) {
             const likeId = picture.likes.find(like => like.user_id === user.id).id;
             removeLike(

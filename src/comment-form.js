@@ -24,7 +24,7 @@ const setCommentFormSabmit = (onSuccess, onFail) => {
 
         blockButton(submitBtnElement, 'Отправка');
         window.setTimeout(() => {
-            sendFetchRequest(URL.COMMENT.POST, HttpMethod.POST ,formData)
+            sendFetchRequest(URL.COMMENT.POST, HttpMethod.POST, formData)
                 .then(() => {
                     onSuccess(picture.id);
                     commentInputElement.value = '';

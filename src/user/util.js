@@ -30,7 +30,7 @@ const unblockButton = (buttonElement) => {
         buttonElement.innerHTML = blockButton.oldText;
     }
 
-    buttonElement.removeAttribute(RenderPosition.BEFOREEND);
+    buttonElement.removeAttribute('disabled');
     buttonElement.style.cursor = 'pointer';
 };
 
