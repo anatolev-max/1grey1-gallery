@@ -5,6 +5,14 @@ import {Filter} from './enum.js';
 const filterList = document.querySelector('.img-filters--inactive');
 const filtersFormElement = document.querySelector('.img-filters__form');
 
+function debounce(func, ms) {
+    let timeout;
+    return function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, arguments), ms);
+    };
+}
+
 const ubdateBtnClassList = (buttonId) => { 
     Object.values(Filter).forEach((idFilter) => {
         document
@@ -37,7 +45,8 @@ const filterBtnClick = (evt) => {
             break;
 
         case Filter.RANDOM:
-            renderPicturesList(randomPictureArray(pictures), true);
+            const debounced = debounce(renderPicturesList, 500);
+            debounced(randomPictureArray(pictures), true);
             break;
 
         case Filter.DISCUSSED:
