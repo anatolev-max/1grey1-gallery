@@ -26,7 +26,24 @@ const deleteData = async (url) => {
     };
 }
 
+const getDataArray = async (urls) => {
+    const requests = urls.map((url) => fetch(url, getOptions(HttpMethod.GET)));
+    const responses = await Promise.all(requests);
+    const dats = new Map();
+
+    for (const response of responses) {
+        dats.set(response.url.split('/')[3], await response.json())
+    }
+
+    return {
+        dats,
+        status: null,
+        errors: null
+    };
+}
+
 export {
     sendFetchRequest,
-    deleteData
+    deleteData,
+    getDataArray
 };

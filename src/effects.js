@@ -1,13 +1,12 @@
 import {APP_STORAGE} from './const.js';
 
 const EFFECTS = JSON.parse(localStorage.getItem(APP_STORAGE.EFFECTS));
-const effectLevelElement = document.querySelector('.effect-level')
+const effectLevelElement = document.querySelector('.effect-level');
 const effectLevelSliderElement = effectLevelElement.querySelector('.effect-level__slider');
 const effectLevelValueElement = effectLevelElement.querySelector('.effect-level__value');
+
 const previewImgElement = document.querySelector('.img-upload__preview img');
-
 const NONE_EFFECT_KEY = 'none';
-
 if (noUiSlider) {
     noUiSlider.create(effectLevelSliderElement, {
         range: {
