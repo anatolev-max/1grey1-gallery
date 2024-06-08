@@ -1,19 +1,12 @@
-import {getRandomArrayElement} from './util.js';
+import {debounce, getRandomArrayElement} from './util.js';
 import {renderPicturesList, pictures} from './picture-list.js';
 import {Filter} from './enum.js';
 
 const filterList = document.querySelector('.img-filters--inactive');
 const filtersFormElement = document.querySelector('.img-filters__form');
+const RERENDER_DELAY = 200;
 
-function debounce(func, ms) {
-    let timeout;
-    return function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, arguments), ms);
-    };
-}
-
-const ubdateBtnClassList = (buttonId) => { 
+const ubdateBtnClassList = (evt) => {
     Object.values(Filter).forEach((idFilter) => {
         document
             .querySelector(`#filter-${idFilter}`)
@@ -21,8 +14,8 @@ const ubdateBtnClassList = (buttonId) => {
     });
 
     document
-        .querySelector(`#${buttonId}`)
-        .classList.add('img-filters__button--active'); 
+        .querySelector(`#${evt.target.id}`)
+        .classList.add('img-filters__button--active');
 }
 
 const randomPictureArray = (pictures) => {
@@ -37,7 +30,6 @@ const randomPictureArray = (pictures) => {
 
 const filterBtnClick = (evt) => {
     const filterName = evt.target.id.split('-')[1];
-    ubdateBtnClassList(evt.target.id);
 
     switch (filterName) {
         case Filter.DEFAULT:
@@ -45,8 +37,7 @@ const filterBtnClick = (evt) => {
             break;
 
         case Filter.RANDOM:
-            const debounced = debounce(renderPicturesList, 500);
-            debounced(randomPictureArray(pictures), true);
+            renderPicturesList(randomPictureArray(pictures), true);
             break;
 
         case Filter.DISCUSSED:
@@ -55,17 +46,20 @@ const filterBtnClick = (evt) => {
     }
 }
 
+const debounced = debounce(filterBtnClick, RERENDER_DELAY);
 const setFilterBtnClick = () => {
     filterList.style = 'opacity: 1';
-    filtersFormElement.addEventListener('click', filterBtnClick);
+    filtersFormElement.addEventListener('click', ubdateBtnClassList);
+    filtersFormElement.addEventListener('click', debounced);
 }
 
-const clouseFilterBtnClick = () => {
+const removeFilterBtnClick = () => {
     filterList.style = 'opacity: 0';
-    filtersFormElement.removeEventListener('click', filterBtnClick);
+    filtersFormElement.removeEventListener('click', ubdateBtnClassList);
+    filtersFormElement.removeEventListener('click', debounced);
 }
 
 export {
     setFilterBtnClick,
-    clouseFilterBtnClick
+    removeFilterBtnClick
 };

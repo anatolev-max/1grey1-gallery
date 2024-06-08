@@ -13,11 +13,20 @@ const clearEntityList = (listElementSelector) => {
     listElements.forEach((element) => element.remove());
 }
 
+function debounce(func, ms) {
+    let timeout;
+    return (...rest) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, rest), ms);
+    };
+}
+
 const checkMobileVersion = () => !window.matchMedia("(min-width: 599px)").matches;
 
 export {
     getRandomInt,
     getRandomArrayElement,
     clearEntityList,
-    checkMobileVersion
+    checkMobileVersion,
+    debounce
 };

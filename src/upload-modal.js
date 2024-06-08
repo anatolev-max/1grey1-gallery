@@ -3,6 +3,7 @@ import {onSliderUpdate, onEffectsRadioChange} from './effects.js';
 import {onDescTextareaInput, onHashtagsInput} from './upload-form.js';
 import {updatePageHeader} from "./user/page-header";
 import {getModalEscKeydownHandler, onModalOverlayClick} from "./modal-util";
+import {debounce} from "./util";
 
 const uploadModalElement = document.querySelector('.img-upload__overlay');
 const uploadModalOpenElement = document.getElementById('upload-file');
@@ -18,6 +19,8 @@ const descriptionTextarea = uploadModalElement.querySelector('.text__description
 
 const onModalEscKeydown = getModalEscKeydownHandler(closeUploadModal);
 const onOverlayClick = onModalOverlayClick(closeUploadModal, 'img-upload__overlay');
+
+const RERENDER_DELAY = 200;
 
 const updateUploadPreview = (file) => {
     const reader = new FileReader();
@@ -61,7 +64,7 @@ const handlers = [
     {
         element: effectListElement,
         event: 'change',
-        callback: onEffectsRadioChange
+        callback: debounce(onEffectsRadioChange, RERENDER_DELAY)
     },
     {
         element: hashtagsInput,
