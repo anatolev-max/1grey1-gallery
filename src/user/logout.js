@@ -2,7 +2,7 @@ import {deleteToken} from '../api/user/async-api.js';
 import {blockButton, unblockButton} from './util.js';
 import {APP_STORAGE, URL} from '../const.js';
 import {clearEntityList} from '../util.js';
-import {clouseFilterBtnClick} from "../filters.js";
+import {removeFilterBtnClick} from "../filters.js";
 
 const logoutBtnElement = document.getElementById('logout-btn');
 const uploadBtnElement = document.querySelector('.img-upload__label');
@@ -20,7 +20,7 @@ const setLogoutBtnClick = (onSuccess) => {
             deleteToken(URL.ACCESS_TOKEN.DELETE + id)
                 .then(() => {
                     clearEntityList('.picture');
-                    clouseFilterBtnClick();
+                    removeFilterBtnClick();
                     uploadBtnElement.style.opacity = '0';
                     onSuccess();
                 })

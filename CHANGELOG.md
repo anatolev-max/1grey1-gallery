@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Made the function a "getDataArray" [1G-1]
+- Made the function a "debounce" in file filter and upload-modal [1G-2]
 
 ### Added
 
